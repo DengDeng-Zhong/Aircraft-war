@@ -1,8 +1,10 @@
-package gq.dengbo;
+package gq.dengbo.shoot;
 
 public class Airplane {
 	
 	public void SayHello() {
-		System.out.println("Hello");
+		
+		
+		
 	}
 }
