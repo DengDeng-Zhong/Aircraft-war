@@ -1,12 +1,21 @@
 package gq.dengbo.shoot;
 
+import java.awt.image.BufferedImage;
 import java.util.Random;
 
 public class Bee extends FlyingObject {
-
-    int xSpeed;
-    int ySpeed;
-    int awardType; // 奖励类型
+    private static BufferedImage [] images;
+    
+    static{
+        images =new BufferedImage[5];
+        for (int i = 0; i < images.length; i++) {
+            images[i] = readImage("bee"+i+".png");
+        }
+    }
+    
+    private int xSpeed; // x坐标移动速度
+    private int ySpeed; // x坐标移动速度
+    private int awardType; // 奖励类型
 
     public Bee() {
         super(60, 50);
@@ -16,4 +25,11 @@ public class Bee extends FlyingObject {
         awardType = random.nextInt(2);
     }
 
+    /**
+     * 重写step（）方法
+     */
+    public void step() {
+        System.out.println("小蜜蜂的x坐标向左移动了："+xSpeed+",y"
+                + "坐标向下移动了："+ySpeed);
+    }
 }
