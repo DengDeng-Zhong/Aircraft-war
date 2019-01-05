@@ -1,11 +1,17 @@
 package gq.dengbo.shoot;
 
+import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.util.Random;
 
 import javax.imageio.ImageIO;
 
-public class FlyingObject {
+public abstract class FlyingObject {
+    public static final int LIFE = 0;   // 活着的
+    public static final int DEAD = 1;   // 死了的
+    public static final int REMOVE = 2; // 删除的
+    protected int state = LIFE;         // 当前状态（默认是活着的）
+    
     protected int width;
     protected int height;
     protected int x;
@@ -47,9 +53,7 @@ public class FlyingObject {
     /**
      * 飞行移动
      */
-    public void step() {
-        System.out.println("飞行物移动了");
-    }
+    public abstract void step();
     
     /**
      * 加载图片
@@ -64,5 +68,43 @@ public class FlyingObject {
             e.printStackTrace();
             throw new RuntimeException();
         }
+    }
+    
+    /**
+     * 获取图片
+     * @return 图片
+     */
+    public abstract BufferedImage getImage();
+    
+    /**
+     * 判断是否是活着的
+     * @return 状态
+     */
+    public boolean isLife(){
+        return state == LIFE;   // 当前状态为LIFE，表示对象为活着的
+    }
+    
+    /**
+     * 判断是否是删除的
+     * @return 状态
+     */
+    public boolean isDead(){
+        return state == DEAD;   // 当前状态为DEAD，表示对象为死了的
+    }
+    
+    /**
+     * 判断是否是删除的
+     * @return 状态
+     */
+    public boolean isRemove(){
+        return state == REMOVE; // 当前状态为REMOVE，表示对象为删除的
+    }
+    
+    /**
+     * 画图片 
+     * @param g 画笔
+     */
+    public void paintObject(Graphics g){
+        g.drawImage(this.getImage(), this.x, this.y,null);
     }
 }

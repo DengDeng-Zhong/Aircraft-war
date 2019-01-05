@@ -32,4 +32,19 @@ public class Bee extends FlyingObject {
         System.out.println("小蜜蜂的x坐标向左移动了："+xSpeed+",y"
                 + "坐标向下移动了："+ySpeed);
     }
+    int index = 1;//下标
+    @Override
+    public BufferedImage getImage() {
+        if (isLife()) {
+            return images[0];
+        }else if (isDead()) {
+            BufferedImage image = images[index++];
+            if (index == images.length) {
+                state = REMOVE;
+            }
+            return image;
+        }
+        return null;
+    }
+    
 }

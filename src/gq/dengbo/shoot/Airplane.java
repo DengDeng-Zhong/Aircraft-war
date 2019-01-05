@@ -52,4 +52,19 @@ public class Airplane extends FlyingObject {
     public void step(){
         System.out.println("小敌机的y坐标 向下移动了"+speed);
     }
+    
+    int index = 1;   // 下标
+    
+    public BufferedImage getImage(){
+        if(isLife()) {        //若活着的
+            return images[0]; //则返回images[0]
+        }else if(isDead()) { //若死了的
+            BufferedImage img = images[index++];
+            if(index==images.length) {
+                state = REMOVE;
+            }
+            return img;
+        }
+        return null; //REMOVE状态时，返回null
+    }
 }

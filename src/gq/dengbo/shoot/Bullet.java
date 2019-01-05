@@ -24,4 +24,13 @@ public class Bullet extends FlyingObject {
     public void step() {
         System.out.println("子弹的y坐标向上移动了:"+speed);
     }
+    
+    public BufferedImage getImage(){
+        if (isLife()) {         //若活着的
+            return image;       //则返回image
+        }else if (isDead()) {   //若死了的
+            state = REMOVE;     //则状态修改为REMOVE
+        }
+        return null;            //DEAD和REMOVE时，返回null
+    }
 }
