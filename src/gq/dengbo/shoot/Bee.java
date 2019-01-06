@@ -29,8 +29,11 @@ public class Bee extends FlyingObject {
      * 重写step（）方法
      */
     public void step() {
-        System.out.println("小蜜蜂的x坐标向左移动了："+xSpeed+",y"
-                + "坐标向下移动了："+ySpeed);
+        x += xSpeed;//x+(向左或向右)
+        y += ySpeed;//y+(向下)
+        if (x<=0 || x>World.WIDTH-this.width) {
+            xSpeed *=-1;//则切换方向(正变负、负变正)
+        }
     }
     int index = 1;//下标
     @Override
@@ -44,7 +47,7 @@ public class Bee extends FlyingObject {
             }
             return image;
         }
-        return null;
+        return null;//REMOVE状态时，返回null
     }
     
 }

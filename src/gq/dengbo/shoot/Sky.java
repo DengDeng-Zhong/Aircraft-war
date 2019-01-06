@@ -23,11 +23,17 @@ public class Sky extends FlyingObject {
      * 重写step（）方法
      */
     public void step(){
-        System.out.println("天空的y坐标和y1坐标向下移动了："+speed);
+        y += speed;
+        y1 += speed;
+        if (y>= World.HEIGHT) {//若y>=窗口的高，意味着y出去了
+            y = -World.HEIGHT;//则修改y为负的窗口的高(挪最上面去)
+        }
+        if (y1>=World.HEIGHT) {//若y1>=窗口的高，意味着y1出去了
+            y1 = -World.HEIGHT;//则修改y1为负的窗口的高(挪最上面去)
+        }
     }
     @Override
     public BufferedImage getImage() {
-        // TODO Auto-generated method stub
         return image;
     }
     

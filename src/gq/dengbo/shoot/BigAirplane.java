@@ -18,7 +18,7 @@ public class BigAirplane extends FlyingObject {
     }
     
     public void step(){
-        System.out.println("大敌机的y坐标向下移动了:"+speed);
+        y += speed;
     }
 
     int index = 1;

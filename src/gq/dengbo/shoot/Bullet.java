@@ -17,12 +17,12 @@ public class Bullet extends FlyingObject {
     private int speed;
 
     Bullet(int x,int y){
-        super(8,14,x,y);
+        super(96,96,x,y);
         speed = 3;
     }
     /** 重写step()移动 */
     public void step() {
-        System.out.println("子弹的y坐标向上移动了:"+speed);
+        y -= speed; //向上移动
     }
     
     public BufferedImage getImage(){

@@ -18,7 +18,7 @@ public class Hero extends FlyingObject {
     private int doubleFire;
 
     public Hero() {
-        super(97, 124, 140, 400);
+        super(120, 79, 140, 400);
         life = 3;
         doubleFire = 0;
     }
@@ -33,7 +33,7 @@ public class Hero extends FlyingObject {
      * 重写step()移动 
      */
     public void step() {
-        System.out.println("英雄机切换图片啦!");
+        
     }
     @Override
     public BufferedImage getImage() {
@@ -41,6 +41,23 @@ public class Hero extends FlyingObject {
             return images;
         }
         return null;
+    }
+    
+    public Bullet[] shoot() {
+        int xStep = this.width/4; //1/4英雄机的宽
+        int yStep = 20;           //固定的20
+        if(doubleFire>0) { //双
+            Bullet[] bs = new Bullet[2]; //2发子弹
+            bs[0] = new Bullet(this.x+1*xStep,this.y-yStep); //x:英雄机的x+1/4英雄机的宽 y:英雄机的y-固定的20
+            bs[1] = new Bullet(this.x+3*xStep,this.y-yStep); //x:英雄机的x+3/4英雄机的宽 y:英雄机的y-固定的20
+            doubleFire-=2; //发射一次双倍火力，则火力值减2
+            return bs;
+        }else { //单
+            Bullet[] bs = new Bullet[1]; //1发子弹
+            bs[0] = new Bullet(this.x+2*xStep,this.y-yStep); //x:英雄机的x+2/4英雄机的宽 y:英雄机的y-固定的20
+            return bs;
+            
+        }
     }
 
 }

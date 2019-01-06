@@ -50,11 +50,13 @@ public class Airplane extends FlyingObject {
      * 重写step()方法
      */
     public void step(){
-        System.out.println("小敌机的y坐标 向下移动了"+speed);
+        y +=speed;//y+(向下)
     }
     
     int index = 1;   // 下标
-    
+    /**
+     * 重写getImage（）获取图片
+     */
     public BufferedImage getImage(){
         if(isLife()) {        //若活着的
             return images[0]; //则返回images[0]
