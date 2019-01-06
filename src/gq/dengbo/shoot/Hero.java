@@ -26,7 +26,8 @@ public class Hero extends FlyingObject {
      * 英雄机随机鼠标移动  x/y:鼠标的x坐标和y坐标
      */
     public void moveTo(int x, int y) {
-        System.out.println("英雄机随着鼠标移动了");
+        this.x = x- this.width/2;
+        this.y = y- this.height/2;
     }
     
     /** 

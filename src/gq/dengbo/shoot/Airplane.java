@@ -69,4 +69,7 @@ public class Airplane extends FlyingObject {
         }
         return null; //REMOVE状态时，返回null
     }
+    public int getScore(){
+        return 1;
+    }
 }

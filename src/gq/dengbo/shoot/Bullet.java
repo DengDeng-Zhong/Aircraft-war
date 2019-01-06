@@ -33,4 +33,9 @@ public class Bullet extends FlyingObject {
         }
         return null;            //DEAD和REMOVE时，返回null
     }
+    
+    /** 重写outOfBounds()越界检测 */
+    public boolean outOfBounds(){
+        return this.y <= - this.height;//子弹的y<=负的子弹的高，即为越界了
+    }
 }

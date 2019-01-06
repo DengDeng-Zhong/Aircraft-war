@@ -50,4 +50,8 @@ public class Bee extends FlyingObject {
         return null;//REMOVE状态时，返回null
     }
     
+    /** 重写getAwardType()获取奖励 */
+    public int getAwardType() {
+        return awardType; //返回奖励类型
+    }
 }

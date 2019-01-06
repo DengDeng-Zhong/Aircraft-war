@@ -35,4 +35,9 @@ public class BigAirplane extends FlyingObject {
         }
         return null;
     }
+    
+    /** 重写getScore()得分 */
+    public int getScore(){
+        return 3;
+    }
 }

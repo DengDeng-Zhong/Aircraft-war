@@ -115,4 +115,9 @@ public abstract class FlyingObject {
     public void paintObject(Graphics g) {
         g.drawImage(this.getImage(), this.x, this.y, null);
     }
+    
+    /**  敌人的越界检查 */
+    public boolean outOfBounds() {
+        return this.y >= World.HEIGHT; // 敌人的y》=窗口的高，即为越界了
+    }
 }
