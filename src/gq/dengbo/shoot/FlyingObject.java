@@ -5,6 +5,7 @@ import java.awt.image.BufferedImage;
 import java.util.Random;
 
 import javax.imageio.ImageIO;
+import javax.print.attribute.standard.MediaSize.Other;
 
 public abstract class FlyingObject {
     public static final int LIFE = 0; // 活着的
@@ -119,5 +120,28 @@ public abstract class FlyingObject {
     /**  敌人的越界检查 */
     public boolean outOfBounds() {
         return this.y >= World.HEIGHT; // 敌人的y》=窗口的高，即为越界了
+    }
+    
+    /**
+     * 碰撞检测
+     * @param other子弹或英雄机
+     * @param this 敌人
+     * @return
+     */
+    public boolean hit(FlyingObject other) {
+        int x1 = this.x-other.width;//x1:敌人的x-子弹的宽
+        int x2 = this.x+other.width;//x2:敌人的x+敌人的宽
+        int y1 = this.y-other.height;//y1:敌人的y-子弹的高
+        int y2 = this.y+other.height;//y2:敌人的y+敌人的高
+        int x = other.x; //x:子弹的x
+        int y = other.y; //y:子弹的y
+        return x>=x1 &&x<=x2 &&y >= y1 && y<=y2;//x在x1与x2之间，并且，y在y1与y2之间，即为撞上了
+    }
+    
+    /**
+     * 飞行物去死
+     */
+    public void goDead() {
+        state = DEAD;
     }
 }

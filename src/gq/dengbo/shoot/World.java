@@ -113,6 +113,45 @@ public class World extends JPanel {
         }
         bullets = Arrays.copyOf(bulletLives, index);
     }
+    
+    int score = 0; //得分
+    
+    /**
+     * 子弹与敌人的碰撞
+     */
+    public void bulletBangAction(){
+        for (int i = 0; i < bullets.length; i++) {
+            Bullet b = bullets[i];
+            for (int j = 0; j < enemies.length; j++) {
+                FlyingObject f = enemies[i];
+                if (b.isLife()&& f.isLife() && f.hit(b)) {//若都活着并且装上
+                    b.goDead();
+                    f.goDead();
+                    if (f instanceof Enemy) {//若被撞对象能得分
+                        Enemy e = (Enemy) f;//将被撞对象强转为得分接口
+                        score += e.getScore(); //玩家得分
+                    }
+                    if (f instanceof Award) {//若被撞对象为奖励
+                        Award a = (Award)f;
+                        int type = a.getAwardType(); //获取奖励类型
+                        switch(type){
+                        case Award.DOUBLE_FIRE:
+                            hero.addDoubleFire();
+                            break;
+                        case Award.LIFE:
+                            hero.addLife();
+                            break;
+                        }
+                    }
+                }
+            }
+            
+            
+        }
+    }
+    
+    
+    
 
     /**
      * 启动程序
@@ -132,7 +171,7 @@ public class World extends JPanel {
         this.addMouseMotionListener(l);// 处理鼠标滑动事件
         
         Timer timer = new Timer();
-        int interval = 15;
+        int interval = 10;
         timer.schedule(new TimerTask() {
             
             @Override
@@ -160,7 +199,10 @@ public class World extends JPanel {
         for (int i = 0; i < bullets.length; i++) {// 遍历所有子弹
             bullets[i].paintObject(g);
         }
-
+        
+        g.drawString("SCORE"+score, 10, 25);//画分
+        g.drawString("LIFE:"+hero.getLife(), 10, 45);
+        g.drawString("版本号：V0.08", 10, 65);
     }
 
     public static void main(String[] args) {

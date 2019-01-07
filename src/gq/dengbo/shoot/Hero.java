@@ -57,8 +57,19 @@ public class Hero extends FlyingObject {
             Bullet[] bs = new Bullet[1]; //1发子弹
             bs[0] = new Bullet(this.x+2*xStep,this.y-yStep); //x:英雄机的x+2/4英雄机的宽 y:英雄机的y-固定的20
             return bs;
-            
         }
     }
-
+    /** 英雄机增命 */
+    public void addLife(){
+        life++;
+    }
+    /** 获取英雄机的命 */
+    public int getLife() {
+        return life; //返回命数
+    }
+    
+    /** 英雄机增火力 */
+    public void addDoubleFire() {
+        doubleFire+=40; //火力值增40
+    }
 }
