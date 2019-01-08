@@ -3,6 +3,11 @@ package gq.dengbo.shoot;
 import java.awt.image.BufferedImage;
 import java.util.Random;
 
+/**
+ * 小蜜蜂 是飞行物 也是奖励
+ * @author DengBo
+ *
+ */
 public class Bee extends FlyingObject {
     private static BufferedImage [] images;
     

@@ -3,7 +3,7 @@ package gq.dengbo.shoot;
 import java.awt.image.BufferedImage;
 
 /**
- * 小敌机类
+ * 小敌机类：是飞行物 也能得分
  * 
  * @author DengBo
  *

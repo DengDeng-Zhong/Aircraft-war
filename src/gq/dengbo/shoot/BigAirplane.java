@@ -2,6 +2,11 @@ package gq.dengbo.shoot;
 
 import java.awt.image.BufferedImage;
 
+/**
+ * 大敌机 是飞行物也能得分
+ * @author DengBo
+ *
+ */
 public class BigAirplane extends FlyingObject {
     private static BufferedImage[] images;
     static{

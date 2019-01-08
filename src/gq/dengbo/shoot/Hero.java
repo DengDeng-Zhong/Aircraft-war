@@ -12,7 +12,9 @@ public class Hero extends FlyingObject {
     private static BufferedImage images;
     
     static{
-        images = readImage("hero.png");
+//        images = new BufferedImage[2];
+        images = readImage("hero0.png");
+//        images[1] = readImage("hero1.png");
     }
     private int life;
     private int doubleFire;
@@ -36,10 +38,13 @@ public class Hero extends FlyingObject {
     public void step() {
         
     }
+    
+    int index =0;
     @Override
     public BufferedImage getImage() {
         if (isLife()) {
             return images;
+            //return images[index++%images.length];
         }
         return null;
     }
@@ -68,8 +73,19 @@ public class Hero extends FlyingObject {
         return life; //返回命数
     }
     
+    /**
+     * 英雄机减命
+     */
+    public void subtractLife() {
+        life--;
+    }
+    
     /** 英雄机增火力 */
     public void addDoubleFire() {
         doubleFire+=40; //火力值增40
+    }
+    /** 清空英雄机火力值 */
+    public void clearDoubleFire() {
+        doubleFire  =0;
     }
 }

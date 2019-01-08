@@ -3,7 +3,7 @@ package gq.dengbo.shoot;
 import java.awt.image.BufferedImage;
 
 /**
- * 子弹类
+ * 子弹类  是飞行物
  * @author DengBo
  *
  */
@@ -18,7 +18,7 @@ public class Bullet extends FlyingObject {
 
     Bullet(int x,int y){
         super(96,96,x,y);
-        speed = 3;
+        speed = 4;  //修改子弹移动速度
     }
     /** 重写step()移动 */
     public void step() {

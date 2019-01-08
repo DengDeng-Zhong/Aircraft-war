@@ -5,8 +5,12 @@ import java.awt.image.BufferedImage;
 import java.util.Random;
 
 import javax.imageio.ImageIO;
-import javax.print.attribute.standard.MediaSize.Other;
 
+/**
+ * 飞行物超类
+ * @author DengBo
+ *
+ */
 public abstract class FlyingObject {
     public static final int LIFE = 0; // 活着的
     public static final int DEAD = 1; // 死了的
@@ -30,7 +34,7 @@ public abstract class FlyingObject {
         this.width = width;
         this.height = height;
         Random random = new Random();
-        x = random.nextInt(512 - this.width); // 0到(窗口宽-敌人宽)之间的随机数
+        x = random.nextInt(World.WIDTH - this.width); // 0到(窗口宽-敌人宽)之间的随机数
         y = -this.height; // 负的敌人的高
     }
 
@@ -130,14 +134,14 @@ public abstract class FlyingObject {
      */
     public boolean hit(FlyingObject other) {
         int x1 = this.x-other.width;//x1:敌人的x-子弹的宽
-        int x2 = this.x+other.width;//x2:敌人的x+敌人的宽
+        int x2 = this.x+this.width;//x2:敌人的x+敌人的宽
         int y1 = this.y-other.height;//y1:敌人的y-子弹的高
-        int y2 = this.y+other.height;//y2:敌人的y+敌人的高
+        int y2 = this.y+this.height;//y2:敌人的y+敌人的高
         int x = other.x; //x:子弹的x
         int y = other.y; //y:子弹的y
         return x>=x1 &&x<=x2 &&y >= y1 && y<=y2;//x在x1与x2之间，并且，y在y1与y2之间，即为撞上了
     }
-    
+
     /**
      * 飞行物去死
      */
